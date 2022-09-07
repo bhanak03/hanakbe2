@@ -68,7 +68,7 @@ setwd("C:/GitHub/hanakbe2/code")
 ?setwd()
 getwd()
 
-#summary(df.r)
+#summary(df.r)####
 #throw            bug              on           floor          
 #Min.   : 1.00   Min.   : 1.00   Min.   : 1.90   Length:16         
 #1st Qu.: 4.75   1st Qu.: 4.75   1st Qu.: 7.10   Class :character  
