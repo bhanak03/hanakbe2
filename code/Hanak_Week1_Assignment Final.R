@@ -68,6 +68,15 @@ setwd("C:/GitHub/hanakbe2/code")
 ?setwd()
 getwd()
 
+#summary(df.r)
+#throw            bug              on           floor          
+#Min.   : 1.00   Min.   : 1.00   Min.   : 1.90   Length:16         
+#1st Qu.: 4.75   1st Qu.: 4.75   1st Qu.: 7.10   Class :character  
+#Median : 8.50   Median : 8.50   Median :10.04   Mode  :character  
+#Mean   : 8.50   Mean   : 8.50   Mean   :10.85                     
+#3rd Qu.:12.25   3rd Qu.:12.25   3rd Qu.:12.25                     
+#Max.   :16.00   Max.   :19.00   Max.   :34.00  
+
 
 # Bind the vectors into a single data frame, rename the columns, and make the character vector with unique values the row names# 
 # Remove the character vector with unique values from the data frame.
