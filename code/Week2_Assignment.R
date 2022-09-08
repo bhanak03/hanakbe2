@@ -13,3 +13,8 @@
 # Upload both plots with the script used to create them to GitHub.
   # Follow the same file naming format as last week for the script.
   # Name plots as Lastname_barplot or Lastname_scatterplot. Save them to your "plots" folder.
+throw<-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+bug<-c(1,1,1,4,4,4,4,4,9,9,9,9,9,9,9)
+on<-c(1.9,4.3,5,6.8,7.2,8.8,9.93,9.97,10.1,10.3,11.3,12,13,14,15)
+the<-c("rug","plant","lamp","rain","blanket","shoe","pillow","laptop","wall","microwave","door","window","stairs","stove","television")
+floor<-c("red","orange","yellow","green","blue","violet","indigo","green","black","green","sage","periwinkle","beige","pink","lavender")
