@@ -16,7 +16,7 @@ a<-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
 b<-c(1,1,1,4,5,6,7,8,9,10,11,12,13,14,15)
 c<-c(1.9,4.3,5,6.8,7.2,8.8,9.93,9.97,10.1,10.3,11.3,12,13,14,15)
 d<-c("rug","plant","lamp","rain","blanket","shoe","pillow","laptop","wall","microwave","door","window","stairs","stove","television")
-e<-c("red","orange","yellow","green","blue","violet","indigo","green","black","green","sage","periwinkle","beige","pink","lavender")
+e<-c("red","orange","yellow","green","blue","violet","indigo","green","black","green","sage","periwinkle","beige","pink","lavender") #which one of these vectors is supposed to be the one with exactly three unique values?
   
 data<- cbind(a,b,c,d,e)
 data
@@ -89,4 +89,4 @@ getwd()
 
 # Push your script and your .csv file to GitHub in a new "Week1" folder.
 
-
+#GREAT JOB!
