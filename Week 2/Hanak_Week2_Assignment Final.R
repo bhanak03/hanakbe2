@@ -61,10 +61,11 @@ b.plot<-arrows(b.plot, df.mean2$Mean-df.sd$StanDev,
 title(main = "My Fav Bar Graph")
 title(xlab = "color", ylab= "How much I Like")
 
-pdf( file = "MyFavoriteBar.pdf", width = 4, height = 7)
+pdf( file = "MyFavoriteBar.pdf", width = 4, height = 7)#So close - needed dev.off() here to make it work. Exported with the wrong dimensions.
 par(family = "serif")
 
 plot(df1$b ~ df1$e, xlab = "color", ylab = "How much I Like", main = "My Fav Bar Graph")
+
 
 #scatterplot####
 
@@ -77,7 +78,7 @@ plot(df1$b ~ df1$c, xlab = "Explanatory", ylab = "Response", main = "My Favorite
 colors()
 
 plot(df1$b ~ df1$c, xlab = "Explanation", ylab = "Responses", main = "My Scatter Plot", 
-     cex.axis=0.8, cex.main = 1.1, cex.lab = 1.25, pch= 18, col = "orchid3")
+     cex.axis=0.8, cex.main = 1.1, cex.lab = 1.25, pch= 18, col = "orchid3") #Supposed to change the x and y labels...otherwise spot on.
 
 
 
