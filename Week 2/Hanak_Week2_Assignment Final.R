@@ -55,7 +55,7 @@ arrows(b.plot, df.mean2$Mean-df.sd$StanDev,
 
 b.plot <- barplot(df.mean2$Mean, names.arg = df.mean2$Factor, ylim = c(0,15))
 
-b.plot<-arrows(b.plot, df.mean2$Mean-df.sd$StanDev,
+arrows(b.plot, df.mean2$Mean-df.sd$StanDev,
        b.plot, df.mean2$Mean+df.sd$StanDev,angle=90,code=3)
 
 title(main = "My Fav Bar Graph")
@@ -63,6 +63,16 @@ title(xlab = "color", ylab= "How much I Like")
 
 pdf( file = "MyFavoriteBar.pdf", width = 4, height = 7)#So close - needed dev.off() here to make it work. Exported with the wrong dimensions.
 par(family = "serif")
+b.plot <- barplot(df.mean2$Mean, names.arg = df.mean2$Factor, ylim = c(0,15))
+
+arrows(b.plot, df.mean2$Mean-df.sd$StanDev,
+       b.plot, df.mean2$Mean+df.sd$StanDev,angle=90,code=3)
+
+title(main = "My Fav Bar Graph")
+title(xlab = "color", ylab= "How much I Like")
+
+getwd()
+dev.off()
 
 plot(df1$b ~ df1$e, xlab = "color", ylab = "How much I Like", main = "My Fav Bar Graph")
 
