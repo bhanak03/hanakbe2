@@ -84,3 +84,56 @@ diversity(data=X, type="all", method="jaccard")
 #South Africa 0.09447415 0.9055258 10.584906           16       0.2647059        3.777778
 #Uruguay      0.33918129 0.6608187  2.948276            4       0.5263158        1.900000
 #Vietnam      0.30909091 0.6909091  3.235294            4       0.5454545        1.833333
+
+
+#i did this in class to practice bc i couldn't figure it out
+
+install.packages("vegan")
+library(vegan)
+
+data(BCI, BCI.env)
+H <- diversity(BCI)
+simp <- diversity(BCI, "simpson")
+invsimp <- diversity(BCI, "inv")
+## Unbiased Simpson
+unbias.simp <- simpson.unb(BCI)
+## Fisher alpha
+alpha <- fisher.alpha(BCI)
+## Plot all
+pairs(cbind(H, simp, invsimp, unbias.simp, alpha), pch="+", col="blue")
+## Species richness (S) and Pielou's evenness (J):
+S <- specnumber(BCI) ## rowSums(BCI > 0) does the same...
+J <- H/log(S)
+## beta diversity defined as gamma/alpha - 1:
+## alpha is the average no. of species in a group, and gamma is the
+## total number of species in the group
+(alpha <- with(BCI.env, tapply(specnumber(BCI), Habitat, mean)))
+(gamma <- with(BCI.env, specnumber(BCI, Habitat)))
+gamma/alpha - 1
+## similar calculations with Shannon diversity
+(alpha <- with(BCI.env, tapply(diversity(BCI), Habitat, mean))) # average
+(gamma <- with(BCI.env, diversity(BCI, groups=Habitat))) # pooled
+## additive beta
+
+#i think this is shannon idek
+
+data(BCI, BCI.env)
+H <- diversity(BCI)
+shan <- diversity(BCI, "shannon")
+alpha <- fisher.alpha(BCI)
+pairs(cbind(H, shan, alpha), pch="+", col="blue")
+## Species richness (S) and Pielou's evenness (J):
+S <- specnumber(BCI) ## rowSums(BCI > 0) does the same...
+J <- H/log(S)
+## beta diversity defined as gamma/alpha - 1:
+## alpha is the average no. of species in a group, and gamma is the
+## total number of species in the group
+(alpha <- with(BCI.env, tapply(specnumber(BCI), Habitat, mean)))
+(gamma <- with(BCI.env, specnumber(BCI, Habitat)))
+gamma/alpha - 1
+## similar calculations with Shannon diversity
+(alpha <- with(BCI.env, tapply(diversity(BCI), Habitat, mean))) # average
+(gamma <- with(BCI.env, diversity(BCI, groups=Habitat))) # pooled
+## additive beta
+
+
