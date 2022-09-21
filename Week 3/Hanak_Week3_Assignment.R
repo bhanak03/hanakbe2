@@ -49,8 +49,8 @@ plot(b)
 
 
 install.packages('diverse')
-library(diverse)
-
+library(diverse)#Where is the manipulated verson?
+??diversiy
 data(pantheon)
 diversity(pantheon)
 diversity(pantheon, type='variety')
@@ -87,6 +87,8 @@ diversity(data=X, type="all", method="jaccard")
 
 
 #i did this in class to practice bc i couldn't figure it out
+#you are on the right track with these - there's more in the example than you need to just run diversity measures.
+#Another issue is that this pack is not always compatible with the "diverse" package so it's best not to run them together when possible. If you had errors, that might be why.
 
 install.packages("vegan")
 library(vegan)
@@ -115,7 +117,7 @@ gamma/alpha - 1
 (gamma <- with(BCI.env, diversity(BCI, groups=Habitat))) # pooled
 ## additive beta
 
-#i think this is shannon idek
+#i think this is shannon idek - Yep, only need the first three lines though.
 
 data(BCI, BCI.env)
 H <- diversity(BCI)
