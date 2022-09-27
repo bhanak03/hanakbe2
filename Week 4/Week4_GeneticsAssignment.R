@@ -34,3 +34,7 @@ plot(ge_data$Yield ~ ge_data$Gen)
 # Which environment would be your very WORST choice for generating a strong yield response? (2 points)
 
 #KSK would be the worst because it has the lowest estimate.
+
+
+#also i'm a biology major I have no clue what some of these questions are asking.
+#at least in the very Matt way in which you have asked them.
