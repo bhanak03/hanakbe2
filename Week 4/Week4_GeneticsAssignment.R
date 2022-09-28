@@ -4,6 +4,8 @@
 #the data points don't appear to be correlated in any way, they are scattered across the board, even most color groups are not all next to each other.
 #the two yellow dots are correlated closer than most of the other locations. Even if a specific color has a cluster close together, most of them also have
 #significant outliers, causing the plot to look so haphazard. 
+#remember these are x/y data and the colors are groups. So correlation on the map would actually be a bad thing i.e. bias sampling.
+
 
 # For your scripting assignment we will use the "ge_data" data frame found in the "stability" package.
   # Install the "stability" package, load it into your R environment, and use the data() function to load the "ge_data". (2 points)
@@ -34,7 +36,8 @@ plot(ge_data$Yield ~ ge_data$Gen)
 # Which environment would be your very WORST choice for generating a strong yield response? (2 points)
 
 #KSK would be the worst because it has the lowest estimate.
-
+#Points for using the estimate, particularly since we haven't talked about it right. However, the question is really about the R-squared...notice I didn't say a positive or negative response?
 
 #also i'm a biology major I have no clue what some of these questions are asking.
 #at least in the very Matt way in which you have asked them.
+  #I will take this under advisement...
