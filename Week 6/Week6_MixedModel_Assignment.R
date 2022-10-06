@@ -17,13 +17,18 @@ library(lme4)
     # In one model only include additive effects.
     # In the other model include one interactive effect.
     # Use a binomial distribution and block as a random effect in both models to match the paper's analyses. Remember ?family to find distribution names.
+?glmmPQL
+
+glmm.add <- glmmPQL(prop.cons~claw.width + activity.level, family = binomial, random = ~ 1 | block, data = data)
+summary(glmm.add)
 
 
-glmm.modn <- glmmPQL(Flight.initiation.distance..FID.~Object, family = gaussian, random = ~ 1 | ID, data = df)
+glmm.int <- glmmPQL(prop.cons~carapace.width, family = binomial, random = ~ 1 | block, data = data)
+summary(glmm.int)
 
 # The authors used proportional consumption of prey as the (y) in their model, but did not include this in the dataset.
   # So we are going to create it - run the following line, assuming df= your data frame (feel free to change that):
-df$prop.cons <- df$eaten/df$prey 
+data$prop.cons <- data$eaten/data$prey 
 
 # (Q1) - The code in line 8 is performing two operations at once. What are they? (2 pts)
 
