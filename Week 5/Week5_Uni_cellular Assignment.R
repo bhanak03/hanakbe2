@@ -130,7 +130,7 @@ hist(data$RepTime.sec)
 #The tallest bars most likely represent functions that are essential to life, things relating to fitness like gamete production (or fission rate in the case of microbes),
 #or growth/maturation of cells. 
 
-
+#The bars represent replication time rather than gene expression. If this was expression, your answer would be spot on!
 
 
 
