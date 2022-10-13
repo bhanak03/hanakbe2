@@ -66,6 +66,19 @@ legend("topright", c("Rabid foxes", "Cute bunnies"), lty = c(1,2), col = c(1,2),
 # Export your final L-V plot with a legend that includes the appropriate genus and/or species name as if the model results were the real plankton data, 
 # and upload with your script. (hint - remember which one is the predator and which is the prey)
 
+library(leaflet)
+library(sf)
+library(lattice)
 
+pnt = st_as_sf(data.frame(x = 174.764474, y = -36.877245),
+               coords = c("x", "y"),
+               crs = 4326)
+
+img = "http://bit.ly/1TVwRiR"
+
+leaflet() %>%
+  addTiles() %>%
+  addCircleMarkers(data = pnt, group = "pnt") %>%
+  addPopupImages(img, group = "pnt")
 
 
