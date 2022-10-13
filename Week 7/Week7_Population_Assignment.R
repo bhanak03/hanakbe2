@@ -7,6 +7,8 @@ library(anytime)
 setwd("C:/GitHub/hanakbe2/Week 7")
 data <- read.csv("Plankton_move_average.csv", header=TRUE)
 
+install.packages("leafpop")
+library(leafpop)
 
 # Read the "Plankton_move_average" CSV in from GitHub. 
 # These are data from the Great Lakes Environmental Research Laboratory plankton sampling.
