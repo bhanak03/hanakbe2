@@ -7,8 +7,6 @@ library(anytime)
 setwd("C:/GitHub/hanakbe2/Week 7")
 data <- read.csv("Plankton_move_average.csv", header=TRUE)
 
-install.packages("leafpop")
-library(leafpop)
 
 # Read the "Plankton_move_average" CSV in from GitHub. 
 # These are data from the Great Lakes Environmental Research Laboratory plankton sampling.
@@ -28,8 +26,10 @@ ggplot(data)  +
 
 # Export this plot to have on hand for reference in the next section of the assignment (and upload with your script).
 
-# (1) - Which species is most likely to be r-selected prey and which its primary predator? (2 pts)
+# (1) - Which species is most likely to be r-selected prey and which its primary predator? 
+#D.mendotae are R selected due to their high populations and Limncalanus are their primary predator. 
 # What is one relationship the third species MIGHT have to the first two? (2 pts)
+#The third species could be a predator to both of the other species, explaining why its population still follows the general curvature of the others at a lower population.
 
 #Now copy/paste in the Lotka-Volterra function, plotting script, and load the "deSolve" package from the tutorial:
 install.packages("deSolve")
@@ -49,36 +49,32 @@ Time <- seq(0, 100, by = 1)
 out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
 
 matplot(out[,-1], type = "l", xlab = "Time", ylab = "Population")
-legend("topright", c("Rabid foxes", "Cute bunnies"), lty = c(1,2), col = c(1,2), box.lwd = 0)
-
-Pars <- c(alpha = 4, beta = 0.5, gamma = .2, delta = .6)
-out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
-
-matplot(out[,-1], type = "l", xlab = "Time", ylab = "Population")
-legend("topright", c("Rabid foxes", "Cute bunnies"), lty = c(1,2), col = c(1,2), box.lwd = 0)
+legend("topright", c("Limncalanus", "D.mendotae"), lty = c(1,2), col = c(1,2), box.lwd = 0)
 
 # (2) - What do alpha, beta, gamma, and delta represent in this function? (4 pts)
+#alpha represents how quickly the fluctuations in population occur, ie how fast the prey repopulate
+#beta is how fast the prey is being killed
+#gamma is how stable populations are
+#delta is predator life spans
 
 # (3) - By only changing values for alpha, beta, gamma, and/or delta
 # change the default parameters of the L-V model to best approximate the relationship between Limncalanus and D.mendotae, assuming both plots are on the same time scale.
 # What are the changes you've made to alpha, beta, gamma, and delta from the default values; and what do they say in a relative sense about the plankton data? (4 pts)
-# Are there other paramenter changes that could have created the same end result? (2 pts)
+# Are there other parameter changes that could have created the same end result? (2 pts)
+
+
+Pars <- c(alpha =3, beta = 0.5, gamma = .2, delta = .6)
+out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
+
+matplot(out[,-1], type = "l", xlab = "Time", ylab = "Population")
+legend("topright", c("Limncalanus", "D.mendotae"), lty = c(1,2), col = c(1,2), box.lwd = 0)
+
+#by increasing alpha by 1, the graph more accurately represents the increase in prey followed by the increase in predator species, as opposed to an increase in prey first.
+#changing most of these values more than a point or two causes the graph to flat line, or shows predator increase first, adjusting alpha was the best solution.
+#the sensitivity of these points indicates that these plankton populations are fragile.
+
 # Export your final L-V plot with a legend that includes the appropriate genus and/or species name as if the model results were the real plankton data, 
 # and upload with your script. (hint - remember which one is the predator and which is the prey)
 
-library(leaflet)
-library(sf)
-library(lattice)
-
-pnt = st_as_sf(data.frame(x = 174.764474, y = -36.877245),
-               coords = c("x", "y"),
-               crs = 4326)
-
-img = "http://bit.ly/1TVwRiR"
-
-leaflet() %>%
-  addTiles() %>%
-  addCircleMarkers(data = pnt, group = "pnt") %>%
-  addPopupImages(img, group = "pnt")
 
 
