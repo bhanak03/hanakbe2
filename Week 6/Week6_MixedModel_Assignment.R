@@ -41,23 +41,25 @@ data$prop.cons <- data$eaten/data$prey
 # (Q2) - Did the interactive effect change which variables predict proportional consumption? How, specifically, did the results change? (5 pts)
 #the model with the multiplication (i wrote it as interactive but idk) because the p value is significant in most of them as
 #opposed to the other one where most of the p values are not significant.
+#Which specific predictors changed?
 
 # (Q3) - Plot the residuals of both models. Do you think either model is a good fit? Why or why not? (3 pts)
 plot(glmm.add)
 plot(glmm.int)
  #both models seem like good fits, their residuals are equally spread.
+#Both are bad fits because there are clear patterns in the residuals.
 
 # Re-run both models as generalized additive models instead (using gam). Then compare the AIC of both models. (4 points each)
 gam.mod1 <- gam(prop.cons~claw.width + activity.level, family = gaussian, random = list(ID=~ 1), data = data)
 summary(gam.mod1)
 gam.mod2 <- gam(prop.cons~carapace.width, family = gaussian, random = list(ID=~ 1), data = data)
 summary(gam.mod2)
-
+#Where are the interactive effects for the second model and why only 2 variables in the first?
 # (Q4) - Which model is a better fit? (2 pt)
 #the gam models are better fits because their residuals are more spread out. 
-
+#Which of the gam models?
 # (Q5) - Based on the residuals of your generalized additive models, how confident are you in these results? (2 pts)
-
+#answer to question??
 plot(gam.mod1$residuals, ylim = c(-.1,.1))
 AIC(gam.mod1)
 plot(gam.mod2$residuals, ylim = c(-.1,.1))
