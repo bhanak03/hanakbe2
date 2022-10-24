@@ -72,7 +72,7 @@ legend("topright", c("Limncalanus", "D.mendotae"), lty = c(1,2), col = c(1,2), b
 #by increasing alpha by 1, the graph more accurately represents the increase in prey followed by the increase in predator species, as opposed to an increase in prey first.
 #changing most of these values more than a point or two causes the graph to flat line, or shows predator increase first, adjusting alpha was the best solution.
 #the sensitivity of these points indicates that these plankton populations are fragile.
-
+#Good point.
 # Export your final L-V plot with a legend that includes the appropriate genus and/or species name as if the model results were the real plankton data, 
 # and upload with your script. (hint - remember which one is the predator and which is the prey)
 
