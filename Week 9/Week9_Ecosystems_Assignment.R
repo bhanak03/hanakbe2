@@ -27,8 +27,11 @@ invert.means <- aggregate(x = invert, by = list(invert$names), FUN = "mean")
 head(abiotic.means)
 head(invert.means)
 
-abiotic.means1 <- abiotic.means[,c(-2,-3,-5,-6,-16)]
+abiotic.means1 <- abiotic.means[,c(-1,-2,-3,-5,-6,-16)]
 invert.means1 <- invert.means[,-2:-3]
+
+abiotic.means1 <- abiotic.means[,-16] 
+abiotic.means2 <- abiotic.means1[,-1:-6]
 
 invert.means2 <- sapply(invert.means1, as.numeric )
 abiotic.means2 <- sapply(abiotic.means1, as.numeric )
