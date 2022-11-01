@@ -48,6 +48,8 @@ ord.int <- rda(invert.means2 ~1, abiotic.means2)
 step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
 step.mod$anova
 
+#there were no significant variables for this data set which indicates that abiotic factors do not influence the invertebrate community.
+
 # (Q2 - 12 pts) Then use the dataset from the tutorial to create a linear model related to your RDA. Try multiple predictors to find the best fit model.
   # Explain the ecological importance of the significant predictors, or lack of significant predictors.
 
