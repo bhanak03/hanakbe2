@@ -27,18 +27,19 @@ invert.means <- aggregate(x = invert, by = list(invert$names), FUN = "mean")
 head(abiotic.means)
 head(invert.means)
 
-abiotic.means1 <- abiotic.means[,c(-2,-3,-5,-6,-16)]
-invert.means1 <- invert.means[,-2:-3]
-
-
+abiotic.means1 <- abiotic.means[,c(-1,-2,-3,-5,-6,-16)]
+invert.means1 <- invert.means[,-1:-3]
+invert.means1.5 <- invert.means1[-20,]
 
 invert.means2 <- sapply(invert.means1, as.numeric )
 abiotic.means2 <- sapply(abiotic.means1, as.numeric )
 
+abiotic.means2 <- as.data.frame(abiotic.means2)
+invert.means2 <- as.data.frame(invert.means2)
 
 library(vegan)
-colnames(abiotic.means1)
-ord <- rda(invert.means2 ~ pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means1)
+colnames(abiotic.means2)
+ord <- rda(invert.means2 ~ pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means2)
 ord
 
 # (Q2 - 12 pts) Then use the dataset from the tutorial to create a linear model related to your RDA. Try multiple predictors to find the best fit model.
