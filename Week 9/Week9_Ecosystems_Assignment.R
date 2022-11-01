@@ -46,7 +46,7 @@ ord <- rda(invert.means2 ~., abiotic.means2)
 ord.int <- rda(invert.means2 ~1, abiotic.means2) 
 
 step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
-step.mod$anova
+
 
 #there were no significant variables for this data set which indicates that abiotic factors do not influence the invertebrate community.
 
