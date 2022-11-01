@@ -31,7 +31,7 @@ abiotic.means1 <- abiotic.means[,c(-1,-2,-3,-5,-6,-16)]
 invert.means1 <- invert.means[,-1:-3]
 invert.means1.5 <- invert.means1[-20,]
 
-invert.means2 <- sapply(invert.means1, as.numeric )
+invert.means2 <- sapply(invert.means1.5, as.numeric )
 abiotic.means2 <- sapply(abiotic.means1, as.numeric )
 
 abiotic.means2 <- as.data.frame(abiotic.means2)
