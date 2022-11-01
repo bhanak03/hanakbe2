@@ -53,9 +53,10 @@ step.mod$anova
 # (Q2 - 12 pts) Then use the dataset from the tutorial to create a linear model related to your RDA. Try multiple predictors to find the best fit model.
   # Explain the ecological importance of the significant predictors, or lack of significant predictors.
 
+
 colnames(invert.means2)
 
-mod1 <- lm(invert.means2 ~ pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means2)
+mod1 <- lm(invert.means2 ~ abiotic.means2)
 summary(mod1)
 anova(mod1)
 AIC(mod1)
