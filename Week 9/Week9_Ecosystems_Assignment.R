@@ -111,4 +111,5 @@ AIC(mod9)
 #there are a lot of factors that contribute to the health of an ecosystem and the organisms within
 #that ecosystem. Comparing how abiotic factors like chemicals in the soil influence specific species
 #and how different species influence each other can give a more rounded view of how the community flows.
-#
+#Potassium, which had the most importance in this data set, plays important roles in photosynthesis, cell
+#size, and nutrient transportation in plants. 
