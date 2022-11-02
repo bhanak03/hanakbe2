@@ -56,10 +56,24 @@ step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
 
 colnames(invert.means2)
 
+<<<<<<< Updated upstream
 mod1 <- lm(invert.means2 ~ abiotic.means2)
+=======
+mod1 <- lm(invert.means2$Vitrina_pellucida ~ pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means2)
+>>>>>>> Stashed changes
 summary(mod1)
 anova(mod1)
 AIC(mod1)
+
+mod2 <- lm(invert.means2$Vitrina_pellucida ~ Perc_ash , abiotic.means2)
+summary(mod2)
+anova(mod2)
+AIC(mod2)
+
+mod3 <- lm(invert.means2$Vitrina_pellucida ~ Kalium , abiotic.means2)
+summary(mod3)
+anova(mod3)
+AIC(mod3)
 
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 
