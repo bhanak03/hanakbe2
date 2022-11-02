@@ -56,11 +56,7 @@ step.mod <- ordistep(ord.int, scope = formula(ord), selection = "both")
 
 colnames(invert.means2)
 
-<<<<<<< Updated upstream
-mod1 <- lm(invert.means2 ~ abiotic.means2)
-=======
-mod1 <- lm(invert.means2$Vitrina_pellucida ~ pH + totalN + Perc_ash + Kalium + Magnesium + Ca + Al + TotalP + OlsenP, abiotic.means2)
->>>>>>> Stashed changes
+mod1 <- lm(invert.means2$Vitrina_pellucida ~ pH , abiotic.means2)
 summary(mod1)
 anova(mod1)
 AIC(mod1)
@@ -75,6 +71,44 @@ summary(mod3)
 anova(mod3)
 AIC(mod3)
 
+mod4 <- lm(invert.means2$Vitrina_pellucida ~ totalN , abiotic.means2)
+summary(mod4)
+anova(mod4)
+AIC(mod4)
+
+
+mod5 <- lm(invert.means2$Vitrina_pellucida ~ Magnesium, abiotic.means2)
+summary(mod5)
+anova(mod5)
+AIC(mod5)
+
+
+mod6 <- lm(invert.means2$Vitrina_pellucida ~ Ca , abiotic.means2)
+summary(mod6)
+anova(mod6)
+AIC(mod6)
+
+mod7 <- lm(invert.means2$Vitrina_pellucida ~ Al , abiotic.means2)
+summary(mod7)
+anova(mod7)
+AIC(mod7)
+
+mod8 <- lm(invert.means2$Vitrina_pellucida ~ TotalP , abiotic.means2)
+summary(mod8)
+anova(mod8)
+AIC(mod8)
+
+mod9 <- lm(invert.means2$Vitrina_pellucida ~ OlsenP, abiotic.means2)
+summary(mod9)
+anova(mod9)
+AIC(mod9)
+
+#Kalium was the most significant predictor in the system. Potassium plays an important role in many 
+#environmental cycles, so this is not surprising. 
+
 # (Q3 - 6 pts) Provide a 3-4 sentence synthesis of how these results relate to one another and the value of considering both together for interpreting biotic-abiotic interactions.
 
-
+#there are a lot of factors that contribute to the health of an ecosystem and the organisms within
+#that ecosystem. Comparing how abiotic factors like chemicals in the soil influence specific species
+#and how different species influence each other can give a more rounded view of how the community flows.
+#
