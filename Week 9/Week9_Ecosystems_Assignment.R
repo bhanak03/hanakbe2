@@ -113,3 +113,5 @@ AIC(mod9)
 #and how different species influence each other can give a more rounded view of how the community flows.
 #Potassium, which had the most importance in this data set, plays important roles in photosynthesis, cell
 #size, and nutrient transportation in plants. 
+
+#How does the significance of potassium for one species relate back to the lack of significance for the whole community? Otherwise great!
