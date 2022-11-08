@@ -11,6 +11,7 @@ library(spdep)
 library(adespatial)
 library(vegan)
 
+setwd("C:/GitHub/hanakbe2/Week 10")
 PatchLatLon.csv <- read.csv("PatchLatLon.csv", header=T)
 HabitatbyPatch.csv <- read.csv("HabitatbyPatch.csv", header=T)
 clingers.csv <- read.csv("Clingers.csv", header=T)
@@ -121,6 +122,8 @@ Clingers.rda <- rda(Clingers.mat, as.data.frame(HabitatbyPatch.csv))
 Clingers.r2a <- RsquareAdj(Clingers.rda)$adj.r.squared
 aem.fwd.c <- forward.sel(Clingers.mat,HabitatbyPatch.csv, adjR2thresh=Clingers.r2a)
 aem.fwd.c
+
+#nothing matters, climate change will get us all.
 
 #Part 4: How do you expect selecting both the spatial and the habitat variables would change the results of the RDAs from Part 1 above? (5 points)
   #(You do not need to redo the RDAs, unless you *want* to.)
