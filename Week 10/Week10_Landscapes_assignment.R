@@ -7,15 +7,24 @@
 #Groupings by habits include the swimmers (off limits for the assignment) as most mobile, sprawlers as 2nd (they move in search of food, but not quickly),
     #and the clingers come in last (they might move up and down on individual rocks).
 
+library(spdep)
+library(adespatial)
+library(vegan)
+
 PatchLatLon.csv <- read.csv("PatchLatLon.csv", header=T)
 HabitatbyPatch.csv <- read.csv("HabitatbyPatch.csv", header=T)
 clingers.csv <- read.csv("Clingers.csv", header=T)
 Trichoptera.csv <- read.csv("Trichoptera.csv", header=T)
+BugsByPatch.csv <- read.csv("BugsByPatch.csv", header=T)
+Swimmers.csv <- read.csv("Swimmers.csv", header=T)
 
 PatchLatLon.mat <- as.matrix(PatchLatLon.csv[,-1])
 HabitatbyPatch.mat <- as.matrix(HabitatbyPatch.csv)
 Clingers.mat <- as.matrix(clingers.csv)
 Trich.mat <- as.matrix(Trichoptera.csv)
+BugsByPatch.mat <- as.matrix(BugsByPatch.csv)
+Swimmers.mat <- as.matrix(Swimmers.csv)
+
 
 nb<-cell2nb(3,30,"queen")
 nb1 <- droplinks(nb, 19, sym=TRUE)
@@ -34,7 +43,7 @@ aem.df
 Space.rda.cling <- rda(Clingers.mat, as.data.frame(aem.df))
 Space.r2a.cling <- RsquareAdj(Space.rda.cling)$adj.r.squared
 
-aem.fwd <- forward.sel(Clingers.mat,aem.df, adjR2thresh=Space.r2a)
+aem.fwd <- forward.sel(Clingers.mat,aem.df, adjR2thresh=Space.r2a.cling)
 
 aem.fwd$order
 
@@ -53,7 +62,7 @@ Space.rda.Trich <- rda(Trich.mat, as.data.frame(aem.df))
 Space.r2a.Trich <- RsquareAdj(Space.rda.Trich)$adj.r.squared
 
 
-aem.fwd <- forward.sel(Trich.mat,aem.df, adjR2thresh=Space.r2a)
+aem.fwd <- forward.sel(Trich.mat,aem.df, adjR2thresh=Space.r2a.Trich)
 
 aem.fwd$order
 
@@ -74,7 +83,9 @@ RsquareAdj(HabNoSpace.rda.Trich)
 #For Caddisflies, they are explained mostly by habitat and not space. This makes sense because they range in mobility as larvae, although the adults can fly. The space
 #doesn't matter because of this range, but this range of motions can still exist in similar/the same habitats.
 #For Clingers, habitat also matters more than space. This is because they are clinging to rocks, unmoving mostly, so space is not influenced unless they were to be stacked
-#on top of each other. Habitat matters because the environment in which they live needs to be suitable for their species. 
+#on top of each other. Habitat matters because the environment in which they live needs to be suitable for their species.
+#Together, the habitat only explanation makes sense due to the diverse nature of caddisfly movement (which would be the thing to specify space) but their 
+#relative dependability to be in freshwater sediment.
 
 #Part 3: For each of your chosen groups of bugs, perform variable selection for the habitat data rather than the AEM data. Which habitat variables are significant for each? (10 points)
   # Definitions for the habitat column names:
@@ -87,6 +98,29 @@ RsquareAdj(HabNoSpace.rda.Trich)
     #Fines = Percent of the substrate as "fines" i.e. small particles too small to measure
     #AveAr = The average size of rocks where each sample was collected
 
+Trich.rda <- rda(Trich.mat, as.data.frame(aem.df))
+Trich.r2a <- RsquareAdj(Trich.rda)$adj.r.squared
+aem.fwd.t <- forward.sel(Trich.mat,aem.df, adjR2thresh=Trich.r2a)
+aem.fwd.t
+
+Clingers.rda <- rda(Clingers.mat, as.data.frame(aem.df))
+Clingers.r2a <- RsquareAdj(Clingers.rda)$adj.r.squared
+aem.fwd.c <- forward.sel(Clingers.mat,aem.df, adjR2thresh=Clingers.r2a)
+aem.fwd.c
+
+
+#trial 2
+
+
+Trich.rda <- rda(Trich.mat, as.data.frame(HabitatbyPatch.csv))
+Trich.r2a <- RsquareAdj(Trich.rda)$adj.r.squared
+aem.fwd.t <- forward.sel(Trich.mat,HabitatbyPatch.csv, adjR2thresh=Trich.r2a)
+aem.fwd.t
+
+Clingers.rda <- rda(Clingers.mat, as.data.frame(HabitatbyPatch.csv))
+Clingers.r2a <- RsquareAdj(Clingers.rda)$adj.r.squared
+aem.fwd.c <- forward.sel(Clingers.mat,HabitatbyPatch.csv, adjR2thresh=Clingers.r2a)
+aem.fwd.c
 
 #Part 4: How do you expect selecting both the spatial and the habitat variables would change the results of the RDAs from Part 1 above? (5 points)
   #(You do not need to redo the RDAs, unless you *want* to.)
