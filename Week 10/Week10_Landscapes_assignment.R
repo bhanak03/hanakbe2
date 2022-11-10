@@ -99,18 +99,7 @@ RsquareAdj(HabNoSpace.rda.Trich)
     #Fines = Percent of the substrate as "fines" i.e. small particles too small to measure
     #AveAr = The average size of rocks where each sample was collected
 
-Trich.rda <- rda(Trich.mat, as.data.frame(aem.df))
-Trich.r2a <- RsquareAdj(Trich.rda)$adj.r.squared
-aem.fwd.t <- forward.sel(Trich.mat,aem.df, adjR2thresh=Trich.r2a)
-aem.fwd.t
 
-Clingers.rda <- rda(Clingers.mat, as.data.frame(aem.df))
-Clingers.r2a <- RsquareAdj(Clingers.rda)$adj.r.squared
-aem.fwd.c <- forward.sel(Clingers.mat,aem.df, adjR2thresh=Clingers.r2a)
-aem.fwd.c
-
-
-#trial 2
 
 
 Trich.rda <- rda(Trich.mat, as.data.frame(HabitatbyPatch.csv))
@@ -123,7 +112,14 @@ Clingers.r2a <- RsquareAdj(Clingers.rda)$adj.r.squared
 aem.fwd.c <- forward.sel(Clingers.mat,HabitatbyPatch.csv, adjR2thresh=Clingers.r2a)
 aem.fwd.c
 
-#nothing matters, climate change will get us all.
+#In the clingers data set, depth and chlorophyll concentration are significant. In Triphs, nothing is
+#significant.
 
 #Part 4: How do you expect selecting both the spatial and the habitat variables would change the results of the RDAs from Part 1 above? (5 points)
   #(You do not need to redo the RDAs, unless you *want* to.)
+
+#I think that if you looked at the spatial and habitat data sets together you would see similar results to the separate RDAs, specifically
+#because space had such low influence on both Clingers and Triph. In addition, I specified above why space was less important than habitat for 
+#both groups: clingers don't move and caddisflies have a variety of movement types and the adults are flying around the real world where space 
+#isn't super important. If I had to estimate which set would have more reuslts from incorporating space, I would however chose Caddisflies due to
+#their varied movement. 
