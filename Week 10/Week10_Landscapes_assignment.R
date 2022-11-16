@@ -48,7 +48,7 @@ aem.fwd <- forward.sel(Clingers.mat,aem.df, adjR2thresh=Space.r2a.cling)
 
 aem.fwd$order
 
-SpaceNoHab.rda.clings <- rda(Clingers.mat, as.data.frame(aem.df[,aem.fwd$order]), Clingers.mat)
+SpaceNoHab.rda.clings <- rda(Clingers.mat, as.data.frame(aem.df[,aem.fwd$order]), Clingers.mat)#Typo - second "clingers.mat" should be the habitat df.
 SpaceNoHab.rda.clings
 anova(SpaceNoHab.rda.clings, perm.max = 10000)
 RsquareAdj(SpaceNoHab.rda.clings)
@@ -67,7 +67,7 @@ aem.fwd <- forward.sel(Trich.mat,aem.df, adjR2thresh=Space.r2a.Trich)
 
 aem.fwd$order
 
-SpaceNoHab.rda.Trich <- rda(Trich.mat, as.data.frame(aem.df[,aem.fwd$order]), Trich.mat)
+SpaceNoHab.rda.Trich <- rda(Trich.mat, as.data.frame(aem.df[,aem.fwd$order]), Trich.mat)#Same issue here.
 SpaceNoHab.rda.Trich
 anova(SpaceNoHab.rda.Trich, perm.max = 10000)
 RsquareAdj(SpaceNoHab.rda.Trich)
@@ -87,6 +87,8 @@ RsquareAdj(HabNoSpace.rda.Trich)
 #on top of each other. Habitat matters because the environment in which they live needs to be suitable for their species.
 #Together, the habitat only explanation makes sense due to the diverse nature of caddisfly movement (which would be the thing to specify space) but their 
 #relative dependability to be in freshwater sediment.
+#you've the space and habitat influence backward with the correct interpretation. Space explains a lot, which means they can't move a lot and are stuck with the local variable habitat (which is why habitat is lower than space)
+
 
 #Part 3: For each of your chosen groups of bugs, perform variable selection for the habitat data rather than the AEM data. Which habitat variables are significant for each? (10 points)
   # Definitions for the habitat column names:
@@ -123,3 +125,6 @@ aem.fwd.c
 #both groups: clingers don't move and caddisflies have a variety of movement types and the adults are flying around the real world where space 
 #isn't super important. If I had to estimate which set would have more reuslts from incorporating space, I would however chose Caddisflies due to
 #their varied movement. 
+
+#This is all true, but it's a little tangential to the question. Without selecting variables for habitat, you are likely overfitting that part of the model right now.
+#So the "real" influence of space is likely much stronger than what you generated with the above models.
