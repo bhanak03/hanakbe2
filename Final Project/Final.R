@@ -4,14 +4,14 @@ library(nngeo)
 
 #bring in data sets
 setwd("C:/GitHub/hanakbe2/Final Project")
-metaldata.csv <- read.csv("metal data.csv", header=T)
-locationdata.csv <- read.csv("location data.csv", header=T)
-salamanderdata.csv <- read.csv("Salamander Data.csv", header = T)
-read.csv()
+metaldata.csv <- read.csv("MetalDataXR.csv", header=T)
+locationdata.csv <- read.csv("LocationDataXR.csv", header=T)
+salamanderdata.csv <- read.csv("SalamanderDataXR.csv", header = T)
+
 
 #merge metal data and location
 ?merge
-locmet<- merge(locationdata.csv,metaldata.csv, by= "MonitoringLocationIdentifier", all=T)
+locmet<- merge(locationdata.csv,metaldata.csv, by.x= "MonitoringLocationIdentifier", by.y= "MonitoringLocationIdentifier")
 
 #create specific object
 salamander_so <- st_as_sf(salamanderdata.csv,coords = c("Lat", "Long"))
