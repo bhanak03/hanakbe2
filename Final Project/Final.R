@@ -26,11 +26,11 @@ matched
 df <- matched
 
 
-#remove NAs
+#remove NAs (this wound up being irrelevent for what I needed)
 salloc <- na.omit(df)
 
 
-#run RDA
+#run lm
 library(spdep)
 library(adespatial)
 library(vegan)
@@ -39,15 +39,121 @@ library(readxl)
 colnames(locmet)
 colnames(salloc)
 
+
+#PJOR(Plethodon jordani) species
 pjor <- subset(matched, matched$Species=="PJOR")
-
-pjorIron <- subset(matched, matched$Species=="PJOR" & matched$CharacteristicName == "Iron")
-
 mod<- lm(pjor$Number~pjor$ResultMeasureValue+pjor$CharacteristicName)
 anova(mod)
-boxplot(pjorIron$Number~as.factor(pjorIron$ResultMeasureValue))
+summary(mod)
+#iron, zinc, strontium, manganese significant
 
+#iron subset, test
+pjorIron <- subset(matched, matched$Species=="PJOR" & matched$CharacteristicName == "Iron")
+plot(pjorIron$Number~as.factor(pjorIron$ResultMeasureValue))
 
+#DOCO (Desmognathus ocoee) species
+doco <- subset(matched, matched$Species=="DOCO")
+mod <- lm(doco$Number~doco$ResultMeasureValue+doco$CharacteristicName)
+anova(mod)
+summary(mod)
+#zinc, manganese, and iron significant
+
+#EWIL (Eurycea wilderae) species
+ewil <- subset(matched, matched$Species=="EWIL")
+mod <- lm(ewil$Number~ewil$ResultMeasureValue+ewil$CharacteristicName)
+anova(mod)
+summary(mod)
+#iron, zinc, manganese, and iron significant
+
+#PTEY (Plethodon teyahalee) species
+ptey <- subset(matched, matched$Species=="PTEY")
+mod <- lm(ptey$Number~ptey$ResultMeasureValue+ptey$CharacteristicName)
+anova(mod)
+summary(mod)
+#strontium and lead significant 
+
+#DIMI (Desmognathus imitator) species
+dimi <- subset(matched, matched$Species=="DIMI")
+mod <- lm(dimi$Number~dimi$ResultMeasureValue+dimi$CharacteristicName)
+anova(mod)
+summary(mod)
+#iron significant 
+
+#DMON (Desmognathus monticola) species
+dmon <- subset(matched, matched$Species=="DMON")
+mod <- lm(dmon$Number~dmon$ResultMeasureValue+dmon$CharacteristicName)
+anova(mod)
+summary(mod)
+#no significance
+
+#DCON (Desmognathus conanti) species
+dcon <- subset(matched, matched$Species=="DCON")
+mod <- lm(dcon$Number~dcon$ResultMeasureValue+dcon$CharacteristicName)
+anova(mod)
+summary(mod)
+#only one unique value, cannot run lm
+
+#DQUA (Desmognathus quadramaculatus) species
+dqua <- subset(matched, matched$Species=="DQUA")
+mod <- lm(dqua$Number~dqua$ResultMeasureValue+dqua$CharacteristicName)
+anova(mod)
+summary(mod)
+#perfect fit, summary unreliable
+
+#DSAN (Desmognathus santeelah) species
+dsan <- subset(matched, matched$Species=="DSAN")
+mod <- lm(dsan$Number~dsan$ResultMeasureValue+dsan$CharacteristicName)
+anova(mod)
+summary(mod)
+#no significance
+
+#DWRI (Desmognathus wrighti) species
+dwri <- subset(matched, matched$Species=="DWRI")
+mod <- lm(dwri$Number~dwri$ResultMeasureValue+dwri$CharacteristicName)
+anova(mod)
+summary(mod)
+#iron, manganese, and strontium significant 
+
+#GPOR (Gyrinophilus porphyriticus) species
+gpor <- subset(matched, matched$Species=="GPOR")
+mod <- lm(gpor$Number~gpor$ResultMeasureValue+gpor$CharacteristicName)
+anova(mod)
+summary(mod)
+#perfect fit, summary unreliable
+
+#NVIR (Notopthalmus viridescenes) species
+nvir <- subset(matched, matched$Species=="NVIR")
+mod <- lm(nvir$Number~nvir$ResultMeasureValue+nvir$CharacteristicName)
+anova(mod)
+summary(mod)
+#only one unique value, cannot run lm
+
+#PGLU (Plethodon glutinosus) species
+pglu <- subset(matched, matched$Species=="PGLU")
+mod <- lm(pglu$Number~pglu$ResultMeasureValue+pglu$CharacteristicName)
+anova(mod)
+summary(mod)
+#perfect fit, summary unreliable
+
+#PSER (Plethodon serratus) species
+pser <- subset(matched, matched$Species=="PSER")
+mod <- lm(pser$Number~pser$ResultMeasureValue+pser$CharacteristicName)
+anova(mod)
+summary(mod)
+#perfect fit, summary unreliable
+
+#All species and metals
 mod <- lm(as.numeric(as.character(matched$Number))~Species+ResultMeasureValue+CharacteristicName, data=matched)
 anova(mod)
 summary(mod)
+#strontium, manganese(most significant), and iron significant among all species
+
+#graph of most common species (pjor) and most significant metal (manganese)
+pjormang <- subset(matched, matched$Species=="PJOR" & matched$CharacteristicName == "Manganese")
+plot(pjormang$Number~as.factor(pjormang$ResultMeasureValue),ylab="",xlab="")
+title(main = "Comparison of PJOR Salamander presence and Manganese")
+title(xlab = "Manganese (mg/l)", ylab= "PJOR Salamander Number")
+
+#do gam for "big honker" -matt
+
+
