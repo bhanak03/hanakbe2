@@ -47,7 +47,7 @@ anova(mod)
 summary(mod)
 #iron, zinc, strontium, manganese significant
 
-#iron subset, test
+#iron subset, test (also you wrote this so I didn't count it towards my graphs)
 pjorIron <- subset(matched, matched$Species=="PJOR" & matched$CharacteristicName == "Iron")
 plot(pjorIron$Number~as.factor(pjorIron$ResultMeasureValue))
 
@@ -154,6 +154,30 @@ plot(pjormang$Number~as.factor(pjormang$ResultMeasureValue),ylab="",xlab="")
 title(main = "Comparison of PJOR Salamander presence and Manganese")
 title(xlab = "Manganese (mg/l)", ylab= "PJOR Salamander Number")
 
+
+#graph of second most common species (ewil) and most significant metal (manganese)
+ewilmang <- subset(matched, matched$Species=="EWIL" & matched$CharacteristicName == "Manganese")
+plot(ewilmang$Number~as.factor(ewilmang$ResultMeasureValue),ylab="",xlab="")
+title(main = "Comparison of EWIL Salamander presence and Manganese")
+title(xlab = "Manganese (mg/l)", ylab= "EWIL Salamander Number")
+
+
 #do gam for "big honker" -matt
 
+library(MASS)
+install.packages("MuMIn")
+library(MuMIn)
+library(mgcv)
+install.packages("lme4")
+library(lme4)
 
+#GAM model for all specis and all metals
+gam.mod <- gam(as.numeric(as.character(matched$Number))~Species+ResultMeasureValue+CharacteristicName, family = gaussian, random = list(ID=~ 1), data = matched)
+summary(gam.mod)
+#strontium, manganese, and iron were sufficient among all species
+
+#GAM plot
+plot(gam.mod$residuals, ylim = c(-.1,.1), ylab="Residuals")
+title(main = "Residuals of All Salamander Species Compared with All Metals")
+AIC(gam.mod)
+#crowded (bad) residual model and high AIC :( (i.e not slay)
