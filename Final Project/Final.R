@@ -171,7 +171,7 @@ library(mgcv)
 install.packages("lme4")
 library(lme4)
 
-#GAM model for all specis and all metals
+#GAM model for all species and all metals
 gam.mod <- gam(as.numeric(as.character(matched$Number))~Species+ResultMeasureValue+CharacteristicName, family = gaussian, random = list(ID=~ 1), data = matched)
 summary(gam.mod)
 #strontium, manganese, and iron were sufficient among all species
