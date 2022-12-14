@@ -1,3 +1,6 @@
+#READ ME- this code doesn't run with ctrl A + ctrl  + enter because some of the stats tests do not have enough information to run, but they will run by
+#going line by line.
+
 #download and install packages
 install.packages("nngeo")
 library(nngeo)
@@ -26,7 +29,7 @@ matched
 df <- matched
 
 
-#remove NAs (this wound up being irrelevent for what I needed)
+#remove NAs (this wound up being irrelevant for what I needed)
 salloc <- na.omit(df)
 
 
@@ -176,7 +179,7 @@ gam.mod <- gam(as.numeric(as.character(matched$Number))~Species+ResultMeasureVal
 summary(gam.mod)
 #strontium, manganese, and iron were sufficient among all species
 
-#GAM plot
+#GAM pl/ot
 plot(gam.mod$residuals, ylim = c(-.1,.1), ylab="Residuals")
 title(main = "Residuals of All Salamander Species Compared with All Metals")
 AIC(gam.mod)
