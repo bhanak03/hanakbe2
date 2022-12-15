@@ -18,7 +18,7 @@ metaldata.csv <- metaldata.csv[complete.cases(metaldata.csv),]
 locmet<- merge(locationdata.csv,metaldata.csv, by.x= "MonitoringLocationIdentifier", by.y= "MonitoringLocationIdentifier")
 
 
-#create specific object
+#create specific object - spatial object
 salamander_so <- st_as_sf(salamanderdata.csv,coords = c("Lat", "Long"))
 location_so <- st_as_sf(locmet, coords = c("LatitudeMeasure","LongitudeMeasure"))
 
@@ -184,3 +184,16 @@ plot(gam.mod$residuals, ylim = c(-.1,.1), ylab="Residuals")
 title(main = "Residuals of All Salamander Species Compared with All Metals")
 AIC(gam.mod)
 #crowded (bad) residual model and high AIC :( (i.e not slay)
+#AIC only matters in comparison to another model, but you're spot on about the residuals.
+
+# Your code is easy to follow and appropriately commented!
+
+#only a couple things that would improve it:
+  #If you remove the ylim from your residual plot it is more informative of a bad fit (though you already knew this)
+plot(gam.mod$residuals, ylab="Residuals")
+  #If the gam was a poor fit for the data, why not try a different distribution, or different combos of 
+      #Species+ResultMeasureValue+CharacteristicName and/or interactive effects to compare models?
+  #You did a great job with the linear models walking through the options, it would have made sense to do the same with the GAM.
+
+
+
